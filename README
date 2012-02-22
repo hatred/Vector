@@ -1,0 +1,27 @@
+/* A Vector class similar to STL vector class supporting lazy copy on write */
+
+/*Assignment operator for vectors of alternate type:
+This is only expected to work between classes that have a valid conversion operator. If you try to instantiate the function with two types that are not validly converted, the compiler will not allow it. Due to the confusion among some students I am pasting a piece of code that this should be able to pass.
+Vector < float > vec_f(10);
+for(int i=0; i<10; i++){
+vec_f[i] = 1.345 + i;
+}
+Vector < int > vec_i = vec_f; // should be able to perform this
+The code for this function would give a warning on compilation and thats fine.
+
+operators to implement for class iterator:
+Comparison: ==, !=, <, <=, >, >=
+Unary: dereference(*), [], pre/post increment, pre/post decrement, +i, -i 
+*/
+
+/*
+
+Copy on write semantics should work like so:
+
+vector x = ...;
+vector::iterator i = x.begin();
+*i = 42;
+vector y = x;
+*i = 3;
+cout << y[0]; // must be 42!
+*/
